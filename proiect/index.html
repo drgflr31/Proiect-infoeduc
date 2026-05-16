@@ -53,7 +53,7 @@
     85%  { opacity: 1; }
     100% { left: calc(100% + 260px); opacity: 0; }
   }
-  .rover-container svg { width: 200px; height: auto; }
+  .rover-container svg { width: 20px; height: auto; }
 
   .dust { position: absolute; bottom: 2px; right: -10px; width: 60px; height: 20px; }
   .dust span { position: absolute; width: 4px; height: 4px; background: #8b4513; border-radius: 50%; animation: dustFloat 0.8s ease-out infinite; }
@@ -204,85 +204,223 @@
 
   <!-- NEW DETAILED ROVER -->
   <div class="rover-container" id="marsRover">
-    <svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <radialGradient id="wg" cx="50%" cy="40%" r="55%">
-      <stop offset="0%" stop-color="#7a7a7a"/>
-      <stop offset="100%" stop-color="#3a3a3a"/>
-    </radialGradient>
-    <radialGradient id="og" cx="40%" cy="35%" r="55%">
-      <stop offset="0%" stop-color="#f07020"/>
-      <stop offset="100%" stop-color="#b84800"/>
-    </radialGradient>
-    <radialGradient id="bg2" cx="40%" cy="35%" r="55%">
-      <stop offset="0%" stop-color="#5a5a5a"/>
-      <stop offset="100%" stop-color="#2a2a2a"/>
-    </radialGradient>
-  </defs>
+<svg viewBox="0 0 680 480" role="img" xmlns="http://www.w3.org/2000/svg" style="width:220px;height:auto;">
 
-  <!-- Umbra -->
-  <ellipse cx="175" cy="178" rx="115" ry="8" fill="rgba(0,0,0,0.18)"/>
+<defs>
+  <pattern id="tread" x="0" y="0" width="10" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+    <rect width="10" height="3" fill="#2a2a2a"/>
+    <rect y="3" width="10" height="3" fill="#1a1a1a"/>
+  </pattern>
+  <pattern id="solar-cells" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+    <rect width="16" height="16" fill="#1a2a1a"/>
+    <rect width="14" height="14" x="1" y="1" fill="#1e3a28"/>
+    <line x1="0" y1="0" x2="16" y2="0" stroke="#0a1a0a" stroke-width="0.8"/>
+    <line x1="0" y1="0" x2="0" y2="16" stroke="#0a1a0a" stroke-width="0.8"/>
+  </pattern>
+  <pattern id="bb-holes" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
+    <rect width="6" height="6" fill="#d4c9a0"/>
+    <circle cx="3" cy="3" r="1.2" fill="#b8ad88"/>
+  </pattern>
+  <style>
+    @keyframes wheelSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .ws  { transform-box:fill-box; transform-origin:center; animation:wheelSpin 1.4s linear infinite; }
+    .wsr { transform-box:fill-box; transform-origin:center; animation:wheelSpin 1.4s linear infinite reverse; }
+    @keyframes ledBlink { 0%,90%,100%{opacity:1;} 95%{opacity:0.3;} }
+    .lb { animation:ledBlink 2.5s ease-in-out infinite; }
+  </style>
+</defs>
 
-  <!-- Grupul ROTI -->
-  <g transform="translate(82,148)">
-    <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="1.4s" repeatCount="indefinite" additive="sum"/>
-    <circle r="26" fill="url(#bg2)" stroke="#1a1a1a" stroke-width="2.5"/>
-    <circle r="14" fill="url(#og)" stroke="#c05000" stroke-width="2"/>
-    <circle r="4" fill="#ffd080" stroke="#c05000" stroke-width="1.5"/>
+<!-- REAR WHEEL -->
+<g transform="translate(192,400)">
+  <circle r="48" fill="#1a1a1a" stroke="#111" stroke-width="2"/>
+  <circle r="48" fill="url(#tread)" opacity="0.6"/>
+  <circle r="36" fill="#222"/>
+  <circle r="30" fill="#e8a800" stroke="#c08000" stroke-width="2"/>
+  <g class="ws">
+    <line x1="0" y1="-30" x2="0" y2="30" stroke="#b07000" stroke-width="4" stroke-linecap="round"/>
+    <line x1="-30" y1="0" x2="30" y2="0" stroke="#b07000" stroke-width="4" stroke-linecap="round"/>
+    <line x1="-21" y1="-21" x2="21" y2="21" stroke="#b07000" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="21" y1="-21" x2="-21" y2="21" stroke="#b07000" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="-6" y="-48" width="12" height="14" rx="4" fill="#333" stroke="#555" stroke-width="1" transform="rotate(0)"/>
+    <rect x="-6" y="-48" width="12" height="14" rx="4" fill="#333" stroke="#555" stroke-width="1" transform="rotate(45)"/>
+    <rect x="-6" y="-48" width="12" height="14" rx="4" fill="#333" stroke="#555" stroke-width="1" transform="rotate(90)"/>
+    <rect x="-6" y="-48" width="12" height="14" rx="4" fill="#333" stroke="#555" stroke-width="1" transform="rotate(135)"/>
+    <rect x="-6" y="-48" width="12" height="14" rx="4" fill="#333" stroke="#555" stroke-width="1" transform="rotate(180)"/>
+    <rect x="-6" y="-48" width="12" height="14" rx="4" fill="#333" stroke="#555" stroke-width="1" transform="rotate(225)"/>
+    <rect x="-6" y="-48" width="12" height="14" rx="4" fill="#333" stroke="#555" stroke-width="1" transform="rotate(270)"/>
+    <rect x="-6" y="-48" width="12" height="14" rx="4" fill="#333" stroke="#555" stroke-width="1" transform="rotate(315)"/>
   </g>
-  <g transform="translate(168,150)">
-    <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="1.2s" repeatCount="indefinite" additive="sum"/>
-    <circle r="27" fill="url(#bg2)" stroke="#1a1a1a" stroke-width="2.5"/>
-    <circle r="15" fill="url(#og)" stroke="#c05000" stroke-width="2"/>
-    <circle r="4.5" fill="#ffd080" stroke="#c05000" stroke-width="1.5"/>
+  <circle r="8" fill="#c09000" stroke="#906800" stroke-width="1.5"/>
+  <circle r="3" fill="#806000"/>
+</g>
+
+<!-- FRONT WHEEL -->
+<g transform="translate(448,400)">
+  <circle r="48" fill="#1a1a1a" stroke="#111" stroke-width="2"/>
+  <circle r="48" fill="url(#tread)" opacity="0.6"/>
+  <circle r="36" fill="#222"/>
+  <circle r="30" fill="#e8a800" stroke="#c08000" stroke-width="2"/>
+  <g class="wsr">
+    <line x1="0" y1="-30" x2="0" y2="30" stroke="#b07000" stroke-width="4" stroke-linecap="round"/>
+    <line x1="-30" y1="0" x2="30" y2="0" stroke="#b07000" stroke-width="4" stroke-linecap="round"/>
+    <line x1="-21" y1="-21" x2="21" y2="21" stroke="#b07000" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="21" y1="-21" x2="-21" y2="21" stroke="#b07000" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="-6" y="-48" width="12" height="14" rx="4" fill="#333" stroke="#555" stroke-width="1" transform="rotate(0)"/>
+    <rect x="-6" y="-48" width="12" height="14" rx="4" fill="#333" stroke="#555" stroke-width="1" transform="rotate(45)"/>
+    <rect x="-6" y="-48" width="12" height="14" rx="4" fill="#333" stroke="#555" stroke-width="1" transform="rotate(90)"/>
+    <rect x="-6" y="-48" width="12" height="14" rx="4" fill="#333" stroke="#555" stroke-width="1" transform="rotate(135)"/>
+    <rect x="-6" y="-48" width="12" height="14" rx="4" fill="#333" stroke="#555" stroke-width="1" transform="rotate(180)"/>
+    <rect x="-6" y="-48" width="12" height="14" rx="4" fill="#333" stroke="#555" stroke-width="1" transform="rotate(225)"/>
+    <rect x="-6" y="-48" width="12" height="14" rx="4" fill="#333" stroke="#555" stroke-width="1" transform="rotate(270)"/>
+    <rect x="-6" y="-48" width="12" height="14" rx="4" fill="#333" stroke="#555" stroke-width="1" transform="rotate(315)"/>
   </g>
-  <g transform="translate(256,150)">
-    <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="1.3s" repeatCount="indefinite" additive="sum"/>
-    <circle r="26" fill="url(#bg2)" stroke="#1a1a1a" stroke-width="2.5"/>
-    <circle r="14" fill="url(#og)" stroke="#c05000" stroke-width="2"/>
-    <circle r="4" fill="#ffd080" stroke="#c05000" stroke-width="1.5"/>
-  </g>
+  <circle r="8" fill="#c09000" stroke="#906800" stroke-width="1.5"/>
+  <circle r="3" fill="#806000"/>
+</g>
 
-  <!-- Undercarriage (Bara roților) - Acum e integrată în sasiu -->
-  <rect x="55" y="138" width="218" height="14" rx="7" fill="#2a2a2a" stroke="#1a1a1a" stroke-width="2"/>
+<!-- THREADED RODS -->
+<rect x="182" y="28" width="8" height="335" rx="3" fill="#b0b8c0" stroke="#8090a0" stroke-width="0.8"/>
+<rect x="450" y="28" width="8" height="335" rx="3" fill="#b0b8c0" stroke="#8090a0" stroke-width="0.8"/>
+<line x1="182" y1="55"  x2="190" y2="55"  stroke="#8090a0" stroke-width="0.5" opacity="0.6"/>
+<line x1="182" y1="65"  x2="190" y2="65"  stroke="#8090a0" stroke-width="0.5" opacity="0.6"/>
+<line x1="182" y1="155" x2="190" y2="155" stroke="#8090a0" stroke-width="0.5" opacity="0.6"/>
+<line x1="182" y1="165" x2="190" y2="165" stroke="#8090a0" stroke-width="0.5" opacity="0.6"/>
+<line x1="182" y1="280" x2="190" y2="280" stroke="#8090a0" stroke-width="0.5" opacity="0.6"/>
+<line x1="182" y1="290" x2="190" y2="290" stroke="#8090a0" stroke-width="0.5" opacity="0.6"/>
+<line x1="450" y1="55"  x2="458" y2="55"  stroke="#8090a0" stroke-width="0.5" opacity="0.6"/>
+<line x1="450" y1="65"  x2="458" y2="65"  stroke="#8090a0" stroke-width="0.5" opacity="0.6"/>
+<line x1="450" y1="155" x2="458" y2="155" stroke="#8090a0" stroke-width="0.5" opacity="0.6"/>
+<line x1="450" y1="165" x2="458" y2="165" stroke="#8090a0" stroke-width="0.5" opacity="0.6"/>
+<line x1="450" y1="280" x2="458" y2="280" stroke="#8090a0" stroke-width="0.5" opacity="0.6"/>
+<line x1="450" y1="290" x2="458" y2="290" stroke="#8090a0" stroke-width="0.5" opacity="0.6"/>
 
-  <!-- SASIU CHUNKY (Mai inalt) -->
-  <!-- Am extins de la y=65 pana la y=140 -->
-  <path d="M48,140 L58,65 L262,65 L275,140 Z" fill="url(#wg)" stroke="#1a1a1a" stroke-width="2.5" stroke-linejoin="round"/>
-  
-  <!-- Detalii pe sasiu (lumini/senzori laterali) -->
-  <circle cx="68" cy="100" r="6" fill="url(#og)" stroke="#b84800" stroke-width="1.5"/>
-  <circle cx="255" cy="100" r="6" fill="url(#og)" stroke="#b84800" stroke-width="1.5"/>
-  
-  <!-- Linie de design la mijloc -->
-  <path d="M54,105 L268,105" stroke="#222" stroke-width="1" opacity="0.3"/>
+<!-- NUTS -->
+<rect x="176" y="28"  width="19" height="9" rx="2" fill="#a0aab2" stroke="#7080a0" stroke-width="0.8"/>
+<rect x="445" y="28"  width="19" height="9" rx="2" fill="#a0aab2" stroke="#7080a0" stroke-width="0.8"/>
+<rect x="176" y="170" width="19" height="9" rx="2" fill="#a0aab2" stroke="#7080a0" stroke-width="0.8"/>
+<rect x="445" y="170" width="19" height="9" rx="2" fill="#a0aab2" stroke="#7080a0" stroke-width="0.8"/>
+<rect x="176" y="300" width="19" height="9" rx="2" fill="#a0aab2" stroke="#7080a0" stroke-width="0.8"/>
+<rect x="445" y="300" width="19" height="9" rx="2" fill="#a0aab2" stroke="#7080a0" stroke-width="0.8"/>
 
-  <!-- CAMERA MAST -->
-  <rect x="108" y="15" width="9" height="50" rx="4" fill="#5a5a5a" stroke="#2a2a2a" stroke-width="1.5"/>
-  <rect x="90" y="5" width="45" height="28" rx="6" fill="url(#og)" stroke="#b84800" stroke-width="2.5"/>
-  <circle cx="104" cy="19" r="7" fill="#1a1a1a" stroke="#333" stroke-width="1.5"/>
-  <circle cx="122" cy="19" r="6" fill="#1a1a1a" stroke="#333" stroke-width="1.5"/>
+<!-- LED corner indicators -->
+<ellipse cx="186" cy="28" rx="7" ry="4" fill="#d4e0e8" stroke="#8090a0" stroke-width="0.8" class="lb"/>
+<ellipse cx="454" cy="28" rx="7" ry="4" fill="#d4e0e8" stroke="#8090a0" stroke-width="0.8" class="lb"/>
+<rect x="183" y="22" width="6" height="8" rx="1" fill="#c0c8d0" stroke="#9090a0" stroke-width="0.5"/>
+<rect x="451" y="22" width="6" height="8" rx="1" fill="#c0c8d0" stroke="#9090a0" stroke-width="0.5"/>
 
-  <!-- ANTENA -->
-  <line x1="175" y1="65" x2="175" y2="35" stroke="#555" stroke-width="3" stroke-linecap="round"/>
-  <circle cx="175" cy="30" r="7" fill="#dd2020" stroke="#990000" stroke-width="2">
-    <animate attributeName="opacity" values="1;0.5;1" dur="1.8s" repeatCount="indefinite"/>
-  </circle>
+<!-- TOP SHELF -->
+<rect x="160" y="36" width="320" height="12" rx="4" fill="#9aa4ac" stroke="#7080a0" stroke-width="1"/>
 
-  <!-- BRAT ROBOTIC (Pivotat de pe noul sasiu înalt) -->
-  <circle cx="265" cy="110" r="10" fill="#4a4a4a" stroke="#1a1a1a" stroke-width="2"/>
-  <line x1="265" y1="110" x2="305" y2="125" stroke="#6a6a6a" stroke-width="10" stroke-linecap="round"/>
-  <circle cx="305" cy="125" r="8" fill="#5a5a5a" stroke="#222" stroke-width="2"/>
-  <line x1="305" y1="125" x2="340" y2="145" stroke="#6a6a6a" stroke-width="8" stroke-linecap="round"/>
-  <circle cx="340" cy="145" r="6" fill="#5a5a5a" stroke="#222" stroke-width="1.5"/>
-  <circle cx="358" cy="135" r="4" fill="url(#og)" stroke="#b84800" stroke-width="1"/>
-  <circle cx="358" cy="155" r="4" fill="url(#og)" stroke="#b84800" stroke-width="1"/>
+<!-- SOLAR PANEL -->
+<rect x="162" y="2"  width="316" height="36" rx="3" fill="#2a3030" stroke="#1a2020" stroke-width="1.5"/>
+<rect x="166" y="5"  width="308" height="30" rx="2" fill="url(#solar-cells)"/>
+<line x1="214" y1="5" x2="214" y2="35" stroke="#0a1a0a" stroke-width="0.8"/>
+<line x1="262" y1="5" x2="262" y2="35" stroke="#0a1a0a" stroke-width="0.8"/>
+<line x1="310" y1="5" x2="310" y2="35" stroke="#0a1a0a" stroke-width="0.8"/>
+<line x1="358" y1="5" x2="358" y2="35" stroke="#0a1a0a" stroke-width="0.8"/>
+<line x1="406" y1="5" x2="406" y2="35" stroke="#0a1a0a" stroke-width="0.8"/>
+<line x1="454" y1="5" x2="454" y2="35" stroke="#0a1a0a" stroke-width="0.8"/>
+<line x1="166" y1="20" x2="474" y2="20" stroke="#0a1a0a" stroke-width="0.8"/>
+<line x1="316" y1="48" x2="314" y2="178" stroke="#dd2222" stroke-width="1.5"/>
+<line x1="322" y1="48" x2="320" y2="178" stroke="#111"    stroke-width="1.5"/>
 
-  <!-- SENSOR BOX (Pe deck-ul de sus) -->
-  <rect x="145" y="48" width="42" height="20" rx="5" fill="#3a3a3a" stroke="#1a1a1a" stroke-width="2"/>
-  <circle cx="158" cy="58" r="4" fill="#1a4a8a"/>
-  <circle cx="174" cy="58" r="4" fill="#1a4a8a"/>
+<!-- MID SHELF -->
+<rect x="160" y="178" width="320" height="12" rx="4" fill="#9aa4ac" stroke="#7080a0" stroke-width="1"/>
+
+<!-- BOOST CONVERTER (blue) -->
+<rect x="202" y="142" width="44" height="38" rx="3" fill="#1a3a8a" stroke="#0a2a6a" stroke-width="1.5"/>
+<rect x="206" y="146" width="36" height="30" rx="2" fill="#1e4aaa"/>
+<ellipse cx="224" cy="148" rx="10" ry="5" fill="#555" stroke="#333" stroke-width="1"/>
+<rect x="214" y="148" width="20" height="8" rx="1" fill="#444" stroke="#333" stroke-width="0.8"/>
+<rect x="210" y="158" width="16" height="10" rx="1" fill="#111" stroke="#333" stroke-width="0.5"/>
+<rect x="228" y="158" width="10" height="10" rx="2" fill="#3366cc" stroke="#224499" stroke-width="0.8"/>
+<rect x="202" y="171" width="44" height="4"  rx="1" fill="#111"/>
+<circle cx="238" cy="152" r="2.5" fill="#44aaff" opacity="0.9" class="lb"/>
+<line x1="246" y1="155" x2="258" y2="155" stroke="#dd2222" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="246" y1="161" x2="258" y2="161" stroke="#111"    stroke-width="1.5" stroke-linecap="round"/>
+<path d="M210 180 C208 210, 206 245, 204 298" fill="none" stroke="#dd2222" stroke-width="1.3" stroke-linecap="round"/>
+<path d="M218 180 C216 210, 214 245, 212 298" fill="none" stroke="#111"    stroke-width="1.3" stroke-linecap="round"/>
+
+<!-- BREADBOARD -->
+<rect x="258" y="139" width="86" height="44" rx="3" fill="#d4c9a0" stroke="#b8ad80" stroke-width="1"/>
+<rect x="262" y="143" width="78" height="36" fill="url(#bb-holes)"/>
+<rect x="262" y="143" width="78" height="5"  fill="#ffcccc" opacity="0.7"/>
+<rect x="262" y="174" width="78" height="5"  fill="#cce0ff" opacity="0.7"/>
+<rect x="294" y="148" width="8"  height="26" fill="#c4b990"/>
+
+<!-- ARDUINO UNO -->
+<rect x="366" y="136" width="82" height="46" rx="4" fill="#006bb3" stroke="#004a80" stroke-width="1.5"/>
+<rect x="370" y="140" width="74" height="38" rx="2" fill="#0077cc"/>
+<rect x="366" y="148" width="10" height="16" rx="2" fill="#555" stroke="#333" stroke-width="0.8"/>
+<rect x="378" y="136" width="56" height="5"  rx="1" fill="#111"/>
+<rect x="378" y="177" width="56" height="5"  rx="1" fill="#111"/>
+<rect x="396" y="148" width="28" height="22" rx="2" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+<circle cx="380" cy="163" r="4" fill="#cc3333"/>
+<text x="410" y="162" text-anchor="middle" font-family="monospace" font-size="5" fill="#88ccff" opacity="0.8">UNO</text>
+<rect x="374" y="184" width="58" height="16" rx="2" fill="#4a3a20" stroke="#2a1a00" stroke-width="1"/>
+<rect x="406" y="187" width="22" height="10" rx="1" fill="#c8a832"/>
+
+<!-- Arduino to Breadboard wires -->
+<path d="M366 153 C354 150, 348 149, 344 152" fill="none" stroke="#dd2222" stroke-width="1.2" stroke-linecap="round"/>
+<path d="M366 159 C354 157, 348 156, 344 158" fill="none" stroke="#111"    stroke-width="1.2" stroke-linecap="round"/>
+<path d="M366 165 C356 165, 350 165, 344 165" fill="none" stroke="#ddcc00" stroke-width="1.1" stroke-linecap="round"/>
+<path d="M366 171 C356 172, 350 172, 344 172" fill="none" stroke="#22aa44" stroke-width="1.1" stroke-linecap="round"/>
+
+<!-- BOTTOM SHELF -->
+<rect x="160" y="308" width="320" height="12" rx="4" fill="#9aa4ac" stroke="#7080a0" stroke-width="1"/>
+
+<!-- L298N MODULE -->
+<rect x="236" y="270" width="168" height="40" rx="4" fill="#8b0000" stroke="#600000" stroke-width="1.5"/>
+<rect x="240" y="273" width="160" height="34" rx="2" fill="#a00000"/>
+<rect x="292" y="274" width="56"  height="28" rx="3" fill="#111"    stroke="#333" stroke-width="1"/>
+<rect x="292" y="274" width="56"  height="5"  rx="1" fill="#1a1a1a"/>
+<rect x="252" y="278" width="22"  height="14" rx="2" fill="#222"    stroke="#444" stroke-width="0.8"/>
+<rect x="358" y="276" width="8"   height="6"  rx="1" fill="#ddcc00" stroke="#aa9900" stroke-width="0.5"/>
+<rect x="370" y="276" width="8"   height="6"  rx="1" fill="#ddcc00" stroke="#aa9900" stroke-width="0.5"/>
+<!-- Left screw terminals -->
+<rect x="236" y="272" width="8" height="8" rx="1" fill="#777" stroke="#555" stroke-width="0.8"/>
+<rect x="236" y="282" width="8" height="8" rx="1" fill="#777" stroke="#555" stroke-width="0.8"/>
+<rect x="236" y="292" width="8" height="8" rx="1" fill="#777" stroke="#555" stroke-width="0.8"/>
+<rect x="236" y="302" width="8" height="8" rx="1" fill="#777" stroke="#555" stroke-width="0.8"/>
+<!-- Right screw terminals -->
+<rect x="396" y="272" width="8" height="8" rx="1" fill="#777" stroke="#555" stroke-width="0.8"/>
+<rect x="396" y="282" width="8" height="8" rx="1" fill="#777" stroke="#555" stroke-width="0.8"/>
+<rect x="396" y="292" width="8" height="8" rx="1" fill="#777" stroke="#555" stroke-width="0.8"/>
+<rect x="396" y="302" width="8" height="8" rx="1" fill="#777" stroke="#555" stroke-width="0.8"/>
+<!-- Power terminals -->
+<rect x="250" y="267" width="10" height="7" rx="1" fill="#777" stroke="#555" stroke-width="0.8"/>
+<rect x="264" y="267" width="10" height="7" rx="1" fill="#777" stroke="#555" stroke-width="0.8"/>
+
+<!-- Arduino signal → L298N -->
+<path d="M394 182 C392 215, 374 250, 366 270" fill="none" stroke="#22aa44" stroke-width="1.1" stroke-linecap="round"/>
+<path d="M400 182 C398 217, 382 252, 374 270" fill="none" stroke="#ee7722" stroke-width="1.1" stroke-linecap="round"/>
+<path d="M406 182 C404 219, 390 254, 382 270" fill="none" stroke="#aa22aa" stroke-width="1.1" stroke-linecap="round"/>
+<path d="M412 182 C410 221, 398 256, 390 270" fill="none" stroke="#3366ee" stroke-width="1.1" stroke-linecap="round"/>
+
+<!-- Breadboard → L298N power -->
+<path d="M272 183 C270 220, 266 255, 262 270" fill="none" stroke="#dd2222" stroke-width="1.3" stroke-linecap="round"/>
+<path d="M280 183 C278 220, 274 255, 270 270" fill="none" stroke="#111"    stroke-width="1.3" stroke-linecap="round"/>
+
+<!-- L298N → REAR MOTOR wires -->
+<path d="M239 274 C228 287, 220 312, 216 345" fill="none" stroke="#dd2222" stroke-width="1.7" stroke-linecap="round"/>
+<path d="M239 283 C226 295, 218 320, 214 353" fill="none" stroke="#111"    stroke-width="1.7" stroke-linecap="round"/>
+<path d="M239 292 C224 303, 216 328, 212 361" fill="none" stroke="#ddcc00" stroke-width="1.3" stroke-linecap="round"/>
+<path d="M239 302 C222 311, 214 336, 210 369" fill="none" stroke="#3366ee" stroke-width="1.3" stroke-linecap="round"/>
+
+<!-- L298N → FRONT MOTOR wires -->
+<path d="M403 274 C416 287, 422 312, 424 345" fill="none" stroke="#dd2222" stroke-width="1.7" stroke-linecap="round"/>
+<path d="M403 283 C418 295, 424 320, 426 353" fill="none" stroke="#111"    stroke-width="1.7" stroke-linecap="round"/>
+<path d="M403 292 C420 303, 426 328, 428 361" fill="none" stroke="#ddcc00" stroke-width="1.3" stroke-linecap="round"/>
+<path d="M403 302 C422 311, 428 336, 430 369" fill="none" stroke="#3366ee" stroke-width="1.3" stroke-linecap="round"/>
+
+<!-- Motor housings -->
+<rect x="204" y="360" width="36" height="20" rx="3" fill="#555" stroke="#333" stroke-width="1"/>
+<rect x="400" y="360" width="36" height="20" rx="3" fill="#555" stroke="#333" stroke-width="1"/>
+<rect x="180" y="367" width="26" height="6"  rx="2" fill="#777" stroke="#555" stroke-width="0.8"/>
+<rect x="434" y="367" width="26" height="6"  rx="2" fill="#777" stroke="#555" stroke-width="0.8"/>
+
 </svg>
+
     <div class="dust"><span></span><span></span><span></span><span></span></div>
   </div>
 
