@@ -114,40 +114,40 @@
   <a href="robo.html" class="nav-logo">Argus</a>
   <a href="robo.html" class="nav-back">
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    Back to overview
+    înapoi la pagina principală
   </a>
 </nav>
 
 <div class="page-hero">
-  <p class="page-label">Sensor System</p>
+  <p class="page-label">Sistemul de senzori</p>
   <div class="page-icon-wrap">
     <svg width="24" height="24" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#e8673a" stroke-width="1.5"/><path d="M8 5v3l2 2" stroke="#e8673a" stroke-width="1.5" stroke-linecap="round"/></svg>
   </div>
-  <h1 class="page-title">Real-time Detection</h1>
-  <p class="page-tagline">Argus sees what the eye cannot.</p>
-  <p class="page-intro">Placeholder: Describe how the real-time detection system works. What sensors are used? How far can they detect? What types of obstacles do they identify?</p>
+  <h1 class="page-title">Detectie în timp real</h1>
+  <p class="page-tagline">Argus vede ce ochiul nevazator nu poate</p>
+  <p class="page-intro">Argus poate detecta pericolele din toate cele 3 directii(fața,stanga,dreapta) singurul lui punct mort fiind spatele unde se afla utilizatorul</p>
 </div>
 
 <div class="page-content">
     <div class="content-block reveal">
-    <h2 class="block-title">How it works</h2>
-    <p class="block-text">Placeholder: Explain the detection pipeline step by step — from sensor input to processed output. Mention the microcontroller, scan frequency, and detection range.</p>
+    <h2 class="block-title">Cum functioneaza?</h2>
+    <p class="block-text">Pe partea din fața servomotorul scaneza 150 de grade, iar cele 2 parti, stanga si dreapta sunt asigurate de ceilalti 2 senzori in actiune. </p>
   </div>
   <div class="content-block reveal">
-    <h2 class="block-title">Technical specs</h2>
-    <p class="block-text">Placeholder: List the exact components — e.g. HC-SR04 ultrasonic sensors, IR proximity modules, scan angle (270°), refresh rate, detection distance (e.g. 2cm–400cm).</p>
+    <h2 class="block-title">Detalii specifice</h2>
+    <p class="block-text">Avem 3 senzori HC-SR04, un servomotor sg90 micro, care primesc ordine de la o placa arduino uno r3</p>
   </div>
   <div class="content-block reveal">
-    <h2 class="block-title">Why it matters</h2>
-    <p class="block-text">Placeholder: Explain the real-world impact. How does split-second detection prevent accidents? What scenarios was it tested in?</p>
+    <h2 class="block-title">De ce conteaza?</h2>
+    <p class="block-text">In urma testelor am observat ca este foarte important ca spatiul scanat sa fie cat mai complet, deoarece in lumea reala obstacole apar de oriunde, in orice moment de timp.</p>
   </div>
   <div class="content-block reveal">
-    <h2 class="block-title">Challenges & solutions</h2>
-    <p class="block-text">Placeholder: What problems did you run into during development? False positives? Interference? How did you solve them?</p>
+    <h2 class="block-title">Provocari si solutii</h2>
+    <p class="block-text">Am intampinat problema pozitionarii senzorilor astfel incat sa reusim sa acoperim cat mai mult spatiu posibil, asa ca am gasit cea mai buna solutie de a acoperii un spatiu exact de 270 de grade.</p>
   </div>
 
   <div class="divider"></div>
-  <a href="index.html" class="back-btn">
+  <a href="robo.html" class="back-btn">
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
     Back to Argus overview
   </a>
