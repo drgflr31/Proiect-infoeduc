@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Voice Alerts — Argus</title>
+<title>Direcție Mecanum — Argus</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -30,7 +30,6 @@
   }
   .nav-back:hover { color: var(--text); }
 
-  /* HERO STRIP */
   .page-hero {
     padding: 10rem 3rem 5rem;
     background: radial-gradient(ellipse at 20% 50%, rgba(196,68,14,0.08) 0%, transparent 60%);
@@ -62,7 +61,6 @@
     border-left: 2px solid rgba(232,103,58,0.3); padding-left: 1.2rem;
   }
 
-  /* CONTENT */
   .page-content { max-width: 900px; margin: 0 auto; padding: 4rem 3rem 6rem; }
   .content-block { margin-bottom: 3.5rem; }
   .block-title {
@@ -80,7 +78,6 @@
     border-radius: 10px; padding: 1.5rem 1.8rem;
   }
 
-  /* BACK BUTTON */
   .back-btn {
     display: inline-flex; align-items: center; gap: 0.6rem;
     padding: 0.75rem 1.5rem; border: 1px solid rgba(232,103,58,0.3);
@@ -89,16 +86,10 @@
     transition: background 0.3s, border-color 0.3s;
   }
   .back-btn:hover { background: rgba(232,103,58,0.08); border-color: var(--accent); }
-
-  /* DIVIDER */
   .divider { height: 1px; background: linear-gradient(to right, transparent, rgba(232,103,58,0.3), transparent); margin: 3rem 0; }
 
-  /* REVEAL */
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal { opacity: 0; transform: translateY(24px); transition: 0.7s ease; }
   .reveal.visible { opacity: 1; transform: none; }
-  .reveal:nth-child(2) { transition-delay: 0.1s; }
-  .reveal:nth-child(3) { transition-delay: 0.2s; }
-  .reveal:nth-child(4) { transition-delay: 0.3s; }
 
   footer {
     padding: 2rem 3rem; border-top: 1px solid rgba(196,68,14,0.15);
@@ -114,27 +105,31 @@
   <a href="index.html" class="nav-logo">Argus</a>
   <a href="index.html" class="nav-back">
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    Înapoi la pagina principala
+    Înapoi la pagina principală
   </a>
 </nav>
 
 <div class="page-hero">
-  <p class="page-label">Sistemul de tractiune</p>
+  <p class="page-label">Sistemul de tracțiune</p>
   <div class="page-icon-wrap">
-    <svg width="24" height="24" viewBox="0 0 16 16" fill="none"><path d="M2 12c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#e8673a" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="6" r="2" stroke="#e8673a" stroke-width="1.5"/></svg>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8673a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
   </div>
-  <h1 class="page-title">Directie Mecanum</h1>
+  <h1 class="page-title">Direcție Mecanum</h1>
   <p class="page-tagline">Navigație omnidirecțională pentru o libertate totală.</p>
-  <p class="page-intro"> Majoritatea roboților trebuie să se rotească pentru a schimba direcția, ceea ce poate induce panică sau dezorientare. Argus poate face pași laterali (strafing), ocolind obstacolele fără a schimba orientarea față de utilizator.</p>
-  </div>
+  <p class="page-intro">Am eliminat mișcările rigide ale roboților clasici. Argus nu trebuie să se rotească pentru a schimba direcția; el glisează natural pe lângă obstacole, oferind o asistență fluidă și predictibilă.</p>
+</div>
+
+<div class="page-content">
   <div class="content-block reveal">
     <h2 class="block-title">Avantajul în Navigație</h2>
     <p class="block-text">Lifturile, coridoarele înguste sau zonele aglomerate sunt coșmaruri de navigație. Tehnologia Mecanum permite robotului să se rotească pe loc și să se strecoare prin spații unde un sistem de tracțiune clasic ar rămâne blocat.</p>
   </div>
+
   <div class="content-block reveal">
     <h2 class="block-title">Mișcare Intuitivă</h2>
-    <p class="block-text">Pentru un nevăzător, orice mișcare bruscă a dispozitivului de asistență este un semnal de alarmă. Direcția omnidirecțională asigură o traiectorie lină și constantă, făcând ghidarea să se simtă naturală, ca și cum ai avea un însoțitor uman la braț.</p>
+    <p class="block-text">Pentru un nevăzător, orice mișcare bruscă a dispozitivului de asistență este un semnal de alarmă. Direcția omnidirecțională asigură o traiectorie lină, făcând ghidarea să se simtă naturală, ca și cum ai avea un însoțitor uman la braț.</p>
   </div>
+
   <div class="content-block reveal">
     <h2 class="block-title">Autonomie în Orice Mediu</h2>
     <p class="block-text">Accentul nostru cade pe independența utilizatorului în interiorul clădirilor. Prin acest sistem de direcție, Argus transformă un mediu plin de bariere arhitecturale într-un spațiu accesibil, unde manevrele complexe devin simple glisări.</p>
@@ -143,14 +138,14 @@
   <div class="divider"></div>
   <a href="index.html" class="back-btn">
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    Inapoi la Argus
+    Înapoi la Argus
   </a>
 </div>
 
 <footer>
   <div class="footer-logo">Argus</div>
-  <span>Infoeducatie 2026</span>
-  <span style="color: rgba(154,136,120,0.4);">Made with Passione</span>
+  <span>Infoeducație 2026</span>
+  <span style="color: rgba(154,136,120,0.4);">Made with Passion</span>
 </footer>
 
 <script>
