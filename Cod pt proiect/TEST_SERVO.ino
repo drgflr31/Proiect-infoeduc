@@ -1,31 +1,31 @@
-/* Sweep
- by BARRAGAN <http://barraganstudio.com>
- This example code is in the public domain.
-
- modified 8 Nov 2013
- by Scott Fitzgerald
- https://www.arduino.cc/en/Tutorial/LibraryExamples/Sweep
-*/
-
 #include <Servo.h>
 
-Servo myservo;  // create Servo object to control a servo
-// twelve Servo objects can be created on most boards
+Servo myservo;
 
-int pos = 0;    // variable to store the servo position
+int angle = 30;        // unghiul de start (stânga)
+int step = 1;          // cât se mișcă la fiecare pas
+bool goingForward = true; // true = merge spre dreapta (unghi mai mare)
 
 void setup() {
-  myservo.attach(2);  // attaches the servo on pin 9 to the Servo object
+  myservo.attach(9);
+  myservo.write(angle);
 }
 
 void loop() {
-  for (pos = 0; pos <= 90; pos += 1) { // goes from 0 degrees to 180 degrees
-    // in steps of 1 degree
-    myservo.write(pos);              // tell servo to go to position in variable 'pos'
-    delay(15);                       // waits 15 ms for the servo to reach the position
-  }
-  for (pos = 90; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
-    myservo.write(pos);              // tell servo to go to position in variable 'pos'
-    delay(15);                       // waits 15 ms for the servo to reach the position
+  myservo.write(angle);
+  delay(15);           // controlează viteza mișcării
+
+  if (goingForward) {
+    angle += step;
+    if (angle >= 150) {     // limita din dreapta (orizontala ta, de ex. 150°)
+      angle = 150;
+      goingForward = false; // schimbă direcția
+    }
+  } else {
+    angle -= step;
+    if (angle <= 30) {      // limita din stânga
+      angle = 30;
+      goingForward = true;  // schimbă direcția
+    }
   }
 }
