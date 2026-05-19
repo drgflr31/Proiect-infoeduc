@@ -154,24 +154,55 @@
   /* GALLERY */
   #gallery-section { max-width: 1100px; margin: 0 auto; }
   .gallery-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 2.5rem; }
-  .gallery-grid { display: grid; grid-template-columns: repeat(3,1fr); grid-template-rows: 200px 200px; gap: 1rem; }
-  .gallery-item {
-    background: var(--dark3); border: 1px solid rgba(196,68,14,0.15);
-    border-radius: 10px; display: flex; align-items: center; justify-content: center;
-    position: relative; overflow: hidden; cursor: pointer; transition: border-color 0.3s;
+  
+  .gallery-grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 1.5rem; 
   }
-  .gallery-item:hover { border-color: rgba(232,103,58,0.4); }
-  .gallery-item:nth-child(1) { grid-column: span 2; }
-  .gallery-item:nth-child(4) { grid-column: span 2; }
-  .gallery-item-inner { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; color: var(--text-muted); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; }
-  .gallery-overlay { position: absolute; inset: 0; background: rgba(232,103,58,0.08); opacity: 0; transition: opacity 0.3s; }
-  .gallery-item:hover .gallery-overlay { opacity: 1; }
-  .gallery-item:nth-child(1) { background: #1e1008; }
-  .gallery-item:nth-child(2) { background: #131a1e; }
-  .gallery-item:nth-child(3) { background: #1a1a0e; }
-  .gallery-item:nth-child(4) { background: #1a0e13; }
-  .gallery-item:nth-child(5) { background: #0e1a18; }
 
+  .gallery-item {
+    background: var(--dark3); 
+    border: 1px solid rgba(196,68,14,0.15);
+    border-radius: 12px; 
+    height: 280px;
+    position: relative; 
+    overflow: hidden; 
+    cursor: pointer; 
+    transition: transform 0.4s ease;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.1);
+  }
+
+  .gallery-overlay { 
+    position: absolute; 
+    inset: 0; 
+    background: linear-gradient(to top, rgba(13,10,7,0.9), transparent 80%); 
+    opacity: 0; 
+    transition: opacity 0.3s; 
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+  }
+
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+  
+  .gallery-text {
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
   /* FOOTER */
   footer { padding: 3rem; border-top: 1px solid rgba(196,68,14,0.15); display: flex; align-items: center; justify-content: space-between; color: var(--text-muted); font-size: 0.8rem; }
   .footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--accent); }
@@ -510,7 +541,7 @@
 
 <div class="section-divider"></div>
 
-<!-- GALLERY -->
+<!-- GALLERY SECTION -->
 <section id="gallery">
   <div id="gallery-section">
     <div class="gallery-header reveal">
@@ -518,48 +549,36 @@
         <p class="section-label">Jurnalul de bord</p>
         <h2 class="section-title">Procesul de construcție:</h2>
       </div>
-      <p style="color: var(--text-muted); font-size: 0.85rem; max-width: 240px; text-align: right; line-height: 1.6;"></p>
     </div>
+    
     <div class="gallery-grid">
       <div class="gallery-item reveal">
-        <div class="gallery-item-inner">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="3" y="6" width="22" height="17" rx="2" stroke="#9a8878" stroke-width="1.5"/><circle cx="14" cy="14" r="4" stroke="#9a8878" stroke-width="1.5"/><path d="M10 6l2-3h4l2 3" stroke="#9a8878" stroke-width="1.5" stroke-linejoin="round"/></svg>
-          <span>Photo 1</span>
-        </div>
-        <div class="gallery-overlay"></div>
+        <img src="poze/robo1.jpeg">
+        <div class="gallery-overlay"><span class="gallery-text">Motoarele inițiale</span></div>
       </div>
       <div class="gallery-item reveal">
-        <div class="gallery-item-inner">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="3" y="6" width="22" height="17" rx="2" stroke="#9a8878" stroke-width="1.5"/><circle cx="14" cy="14" r="4" stroke="#9a8878" stroke-width="1.5"/></svg>
-          <span>Photo 2</span>
-        </div>
-        <div class="gallery-overlay"></div>
+        <img src="poze/robo2.jpeg">
+        <div class="gallery-overlay"><span class="gallery-text">Primul etaj</span></div>
       </div>
       <div class="gallery-item reveal">
-        <div class="gallery-item-inner">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="3" y="6" width="22" height="17" rx="2" stroke="#9a8878" stroke-width="1.5"/><circle cx="14" cy="14" r="4" stroke="#9a8878" stroke-width="1.5"/></svg>
-          <span>Photo 3</span>
-        </div>
-        <div class="gallery-overlay"></div>
+        <img src="poze/robo3.jpeg">
+        <div class="gallery-overlay"><span class="gallery-text">Robotul la încarcat</span></div>
       </div>
       <div class="gallery-item reveal">
-        <div class="gallery-item-inner">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="3" y="6" width="22" height="17" rx="2" stroke="#9a8878" stroke-width="1.5"/><circle cx="14" cy="14" r="4" stroke="#9a8878" stroke-width="1.5"/></svg>
-          <span>Photo 4</span>
-        </div>
-        <div class="gallery-overlay"></div>
+        <img src="poze/robo4.jpeg">
+        <div class="gallery-overlay"><span class="gallery-text">Al doilea etaj</span></div>
       </div>
       <div class="gallery-item reveal">
-        <div class="gallery-item-inner">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="3" y="6" width="22" height="17" rx="2" stroke="#9a8878" stroke-width="1.5"/><circle cx="14" cy="14" r="4" stroke="#9a8878" stroke-width="1.5"/></svg>
-          <span>Photo 5</span>
-        </div>
-        <div class="gallery-overlay"></div>
+        <img src="poze/robo5.jpeg">
+        <div class="gallery-overlay"><span class="gallery-text">Robotul final</span></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="poze/robo6.jpeg">
+        <div class="gallery-overlay"><span class="gallery-text">Robotul work in progress</span></div>
       </div>
     </div>
   </div>
 </section>
-
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Argus</div>
