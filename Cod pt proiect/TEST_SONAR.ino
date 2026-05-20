@@ -1,71 +1,70 @@
 #include <Servo.h>
 
-const int trigPin = 9;
-const int echoPin = 10;
-const int servoPin = 8;
-
 Servo myservo;
+int angle = 30;
+int step = 1;
+bool goingForward = true;
 
-// --- SETĂRILE stas ---
-float viteza = 0.05;      
-int unghiMin = 20;        
-int unghiMax = 160;       
-int pauzaMasurare = 100; // Am mărit puțin pauza de printare ca să poată citi mai ușor
-// ----------------------
+const int servoPin  = 6;
+const int buzzerPin = 8;
+const int trigPin   = 9;
+const int echoPin   = 10;
 
-float pos = unghiMin;
-int directie = 1;
-unsigned long timpAnterior = 0;
+long duration;
+float distance_cm;
 
 void setup() {
   myservo.attach(servoPin);
+  myservo.write(angle);
+
+  pinMode(buzzerPin, OUTPUT);
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
-  
-  // PORNIRE SERIALĂ
-  Serial.begin(115200); 
-  delay(1000); // Așteptăm o secundă să se stabilizeze conexiunea
-  Serial.println("--- TEST RADAR PORNIRE ---");
+
+  Serial.begin(9600);
 }
 
-void loop() {
-  // 1. Mișcare motor
-  pos += (viteza * directie);
-
-  if (pos >= unghiMax) { directie = -1; }
-  if (pos <= unghiMin) { directie = 1; }
-
-  myservo.write((int)pos);
-
-  // 2. Măsurare și afișare forțată
-  unsigned long timpCurent = millis();
-  if (timpCurent - timpAnterior >= pauzaMasurare) {
-    timpAnterior = timpCurent;
-    
-    int dist = citesteDistanta();
-    
-    // Printăm brut pentru a vedea dacă ajung datele
-    Serial.print("U:"); 
-    Serial.print((int)pos);
-    Serial.print(" | D:");
-    Serial.print(distance);
-    Serial.println(" cm");
-  }
-}
-
-int citesteDistanta() {
+float readDistanceCM() {
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
   digitalWrite(trigPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
-  
-  // pulseIn returnează 0 dacă nu primește semnal în 30ms
-  long duration = pulseIn(echoPin, HIGH, 30000); 
-  
-  if (duration == 0) {
-    return -1; // Semnalăm că senzorul nu primește ecou (eroare de cablaj)
+
+  duration = pulseIn(echoPin, HIGH);
+  float d = duration * 0.034 / 2.0;
+  return d;
+}
+
+void loop() {
+  myservo.write(angle);
+  delay(15);
+
+  distance_cm = readDistanceCM();
+
+  Serial.print("Unghi: ");
+  Serial.print(angle);
+  Serial.print("  Distanta: ");
+  Serial.print(distance_cm);
+  Serial.println(" cm");
+
+  if (distance_cm > 0 && distance_cm < 50) {
+    tone(buzzerPin, 1000);
+  } else {
+    noTone(buzzerPin);
   }
-  
-  return duration * 0.034 / 2;
+
+  if (goingForward) {
+    angle += step;
+    if (angle >= 150) {
+      angle = 150;
+      goingForward = false;
+    }
+  } else {
+    angle -= step;
+    if (angle <= 30) {
+      angle = 30;
+      goingForward = true;
+    }
+  }
 }
