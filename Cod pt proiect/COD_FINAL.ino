@@ -1,12 +1,12 @@
 #include <Servo.h>
 
-// --- Configurare Pini Motoare ---
+// Pini Motoare
 #define IN1 4
 #define IN2 5
 #define IN3 6
 #define IN4 7
 
-// --- Configurare Periferice ---
+//  Periferice
 const int servoPin      = 8;
 const int buzzerFata    = 9;  
 const int buzzerStanga  = 13; 
@@ -45,7 +45,7 @@ void setup() {
 }
 
 void loop() {
-  // 1. LIMITĂ DE TIMP
+  // lim-timp
   if (millis() - startTime > limitTime) {
     motorStop();
     digitalWrite(buzzerFata, HIGH);
@@ -53,13 +53,12 @@ void loop() {
     noTone(buzzerDreapta);
     while(true); 
   }
-
-  // 2. CITIRE DISTANȚE
+//distanta
   float distFata = readDistance(trigFata, echoFata);
   float distStanga = readDistance(trigStanga, echoStanga);
   float distDreapta = readDistance(trigDreapta, echoDreapta);
 
-  // 3. LOGICĂ BUZZERE LATERALE (Alertă proximitate < 30cm)
+  // buzz lat
   if (distStanga < 30.0 && distStanga > 1.0) {
     tone(buzzerStanga, 800); 
   } else {
@@ -72,7 +71,7 @@ void loop() {
     noTone(buzzerDreapta);
   }
 
-  // 4. LOGICĂ DE CONTROL
+  // control
   if (distFata > 1.0 && distFata < 35.0) { 
     motorStop();
     digitalWrite(buzzerFata, LOW); 
@@ -96,7 +95,7 @@ void loop() {
   else {
     forward();
     
-    // --- BUCATA TA DE COD MODIFICATĂ (SCANARE MAI LARGĂ) ---
+    // scan
     myservo.write(angle);
     if (goingForward) {
       angle += step;
@@ -111,7 +110,7 @@ void loop() {
         goingForward = true;
       }
     }
-    delay(25); // Un mic delay pentru a lăsa servo-ul să ajungă la poziție
+    delay(25); // delay
   }
 }
 
